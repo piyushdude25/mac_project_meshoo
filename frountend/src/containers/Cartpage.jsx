@@ -4,7 +4,6 @@ import axios from "axios";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {TOTAL_ITEMS, TOTAL_PRICE,DELETE_CART, TOTAL_DISCOUNT} from "../CartRedux/action"
 //import {ADD_ITEMS} from '../CartRedux/action';
 import {ActionTypes} from "../redux/constants/action-types";
 

@@ -17,16 +17,19 @@ const UserLogin = () => {
   return (
     <>
 
-    {/* <Switch onClick={toggler} /> */}
-    <button onClick={toggler} className="toggleBtn"> {
+    
+    {/* <button onClick={toggler} className="toggleBtn"> {
         toggle ? <div> <div><HowToRegIcon/></div><div><Link to="/signup" ><p className="hoverWhite">SignUp</p></Link></div></div>
                : <div> <LoginIcon/><div><Link to="/login"><p className="hoverWhite">LogIn</p></Link></div></div>
                
     }
+      </button> */}
+       <button onClick={toggler} className="toggleBtn"> {
+        toggle ? <div> <div><HowToRegIcon/></div><div><Link to="/tsignup" ><p className="hoverWhite">SignUp</p></Link></div></div>
+               : <div> <LoginIcon/><div><Link to="/tlogin"><p className="hoverWhite">LogIn</p></Link></div></div>      
+    }
       </button>
-    {/* {
-        toggle ?  <span><Link to="/signup" />1</span> : <span>2</span>
-    } */}
+   
         
 
     </>

@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+
 import { useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 
 import {fetchProduct,removeSelectedProduct} from "../redux/actions/ProductAction";
-import { addcart } from "../CartRedux/action";
+
 import "./ProductDetails.css";
-import { CartContext } from "../contextApi/CartContext";
-import { ADD_CART } from "../CartRedux/action";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
-import { blue, red } from "@mui/material/colors";
-import { Stack,Rating} from '@mui/material'
+import { Rating} from '@mui/material'
 import {ActionTypes} from "../redux/constants/action-types";
 
 const ProductDetails = () => {
@@ -42,38 +37,11 @@ useEffect(() => {
 }, []);
 
 
-  const {
-    Pid,
-    image,
-    img1,
-    img2,
-    img3,
-    name,
-    price,
-    category,
-    delivery,
-    reviews,
-    discount,
-    sub_category,
-    gender,
-    product_type,
-    ratings,
-    description,
-  } = product;
+  const { Pid,image,img1,img2,img3,name,price,category,delivery,reviews, discount,sub_category,gender,product_type,ratings, description,} = product;
 
 
 
-  const handlecart = (product) => {
-    axios
-      .post("https://meesho123.herokuapp.com/cart", {product})
-      .then((res) => {
-        console.log("Add to cart", res.data.product);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+ 
   return (
     <div className="ui grid container" key={id}>
      
@@ -106,7 +74,7 @@ useEffect(() => {
                 <h4> ${discount} </h4>
                 <h4> {(price - discount) / 100}% OFF </h4>
               </div>
-
+<br/><hr/><br/>
               <div className="flex gap3">
                 <div>{ratings} </div>
                 <Rating value={Math.floor(ratings)} precision={0.5} size='small' style={{color: 'green'}}   />
@@ -117,35 +85,28 @@ useEffect(() => {
               <div>{delivery} Delivery</div>
             </div>
 
-            <div className="flex gap3 ">
+            {/* <div className="flex gap3 ">
               <div>
                 <h3>Category</h3>
                 <p>{category}</p>
               </div>
-
               <div>
                 <h3>Sub Category</h3>
                 <p>{sub_category}</p>
               </div>
-
               <div>
                 <h3>Gender</h3>
                 <p>{gender}</p>
               </div>
-
               <div>
                 <h3>Product Type</h3>
                 <p>{product_type}</p>
               </div>
-            </div>
-
+            </div> */}
+<br/><hr/><br/>
             <div className="details ">
-              <h2>Product Details :</h2>
-              {/* <p>Name : {name}</p>
-                <p>Gender : {gender}</p>
-                <p>Category : {category}</p>
-                <p>Sub Category : {sub_category}</p>              
-                <p>Product Type : {product_type}</p> */}
+              <h3>Product Details :</h3>
+             
               <p>Description : {description}</p>
             </div>
 
@@ -154,11 +115,12 @@ useEffect(() => {
             
           </div>
           <div  className="buttons-cart">
-           {/* <Button variant="outlined" onClick={() =>handlecart(product)}>ADD CART</Button> */}
+    
 
            <Button className="btns" variant="outlined" onClick={() => dispatch({type:ActionTypes.ADD_CART, payload:product})}>ADD TO CART</Button>
            
-         
+           <span> ‎ </span>
+       
            <Link to="/product/cart">  <Button className="btns" variant="outlined"> Go To Checkout</Button></Link>
 </div>
             

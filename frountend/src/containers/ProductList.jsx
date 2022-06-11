@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setProducts,fetchProducts } from "../redux/actions/ProductAction";
+import { setProducts,fetchProducts     , sortfetchProducts} from "../redux/actions/ProductAction";
 import ProductComponent from "./ProductComponent";
 import "./ProductList.css";
 import "./SearchAppBar.css"
@@ -22,28 +22,7 @@ const ProductPage = () => {
 
 
 
-// XXXXXXXXXXXXXXXXXXXXXXXXX   sorting   XXXXXXXXXXXXXXXXXXXXXXXXX
-
-// let sortCriteria ="desc"
-//  const sorting = () => {
-//   products.sort((a,b) => {
-//     // if(sortCriteria === "asc"){
-//       return a.price - b.price
-//     // }else if(sortCriteria === "desc"){
-//     //   return b.price - a.price
-//     // }
-//   })
-//   console.log("sorting...:" , sorting)
-//  }
-
-// const handleSortedData =(query)=>{
-//   axios.get(`https://meesho-clone2.herokuapp.com/products?category=${query}`).then(({data})=>{
-//       console.log("catrgory:",data)
-      
-//       dispatch(setProducts(data));
-//   })
-// }
-
+//////////for sorting...........
  const handleSorted =(order)=>{
   axios
   .get(`https://meesho-clone2.herokuapp.com/products?_sort=price&_order=${order}`)
@@ -57,37 +36,7 @@ const ProductPage = () => {
 
 
 
-// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-
-
-//   const fetchProductsxxxxxxx = async () => {
-//     const response = await axios
-//     // .get(" http://localhost:8081/products", {
-//     //   .get("https://fakestoreapi.com/products", {
-//        .get("https://meesho-clone2.herokuapp.com/products", {
-//        params: {
-//           _sort: price,
-//           _order: order,
-//         },
-//       })
-
-// // .get("https://meesho-clone2.herokuapp.com/products")
-
-
-
-//       .catch((err) => {
-//         console.log("Err: ", err);
-//       });
-//     console.log("res:",response.data,products);
-//     dispatch(setProducts(response.data));
-//   };
-
-  // useEffect(() => {
-  //  fetchProducts();
-  // }, [order]);
-
-  //by thunk...
+ 
   useEffect(() => {
     
     dispatch (fetchProducts());
@@ -95,7 +44,7 @@ const ProductPage = () => {
     // handleSorted();
    }, [order]);
 
-  // console.log("Products :", products);
+
   return (
     <>
 
@@ -107,19 +56,13 @@ const ProductPage = () => {
 
       <div className="sortBtns">
         {" "}
-        {/* <button onClick={() => { setOrder("asc");  }} >
-          low to high
-        </button>
-
-        <button onClick={() => {setOrder("desc");}}>
-          high to low
-        </button> */}
+      
 
         <button variant="text" onClick={()=>handleSorted("asc")}>low to high</button>
         <button variant="text" onClick={()=>handleSorted("desc")}>high to low</button>
 
 
-        {/* <button variant="text" onClick={()=>handleSortedData("shirt")} >men</button> */}
+     
       
 
 
