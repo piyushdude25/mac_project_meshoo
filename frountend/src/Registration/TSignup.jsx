@@ -26,10 +26,14 @@ const TSignup = () => {
         email: e.target.email.value,
         mobile: e.target.mobile.value,
         password: e.target.password.value,
+        // role: e.target.role.value,
       };
 
       axios
-        .post("https://ecommerce-masai.herokuapp.com/signup", payload)
+        .post(
+          "https://ecommerce-masai.herokuapp.com/signup"
+          // "https://meesho-website-clone.herokuapp.com/register"
+          , payload)
         .then((res) => {
           toast.success("Register SuccessFull", { position: "top-center" });
           setTimeout(() => {
@@ -97,6 +101,23 @@ const TSignup = () => {
                   : null
               }
             />
+
+{/* //extra role// */}
+            {/* <TextField
+              sx={{ marginTop: "20px" }}
+              variant="outlined"
+              id="role"
+              fullWidth
+              error={showerr}
+              label={showerr ? "required" : "Role"}
+              helperText={
+                showerr
+                  ? "Enter Role"
+                  : null
+              }
+            /> */}
+{/* //rxtra role// */}
+
             <TextField
               sx={{ marginTop: "20px" }}
               type="password"
@@ -108,7 +129,7 @@ const TSignup = () => {
               helperText={
                 showerr
                   ? "Enter valid  Password"
-                  : "# Password with one Uppercase, number, Alphabet, specialchar.  "
+                  : "# Password with one Uppercase, Number, Alphabet, Specialchar.  "
               }
             />
             <Button

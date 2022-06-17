@@ -21,15 +21,22 @@ export const LoginPage = () => {
     const res = await axios.post(
       "https://meesho-website-clone.herokuapp.com/login",
       formdata
-    );
-    //const data = await res.send();
-    if (res.status === 201) {
-      console.log("login success...");
+    )
+
+    .then(({ data }) => {
       alert("login successfully");
-      navigate("/product");
-    } else {
-      console.log(res.data.message);
-    }
+      console.log("login success...");
+     setTimeout(()=>{
+      localStorage.setItem("token", data.token);
+      navigate("/product")
+     },1000)
+
+    })
+    .catch((err) => {
+      alert("Email and Password are invalid");
+      // console.log("err:",res.data.message);
+      console.log(err)
+    });
   };
 
   return (

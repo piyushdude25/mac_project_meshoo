@@ -28,6 +28,7 @@ const SignUp = () => {
           <div className='subBoxxx'>
               <h1>New Account</h1>
               <form onSubmit={handlesubmit}  className='form'>
+
                 <input type="text" placeholder='Full Name'  
             name="name"
             onChange={handleChange}/>
@@ -37,6 +38,14 @@ const SignUp = () => {
                 <input type="password" placeholder='Password'  
             name="password" 
             onChange={handleChange}/>
+            <input type="text" placeholder='Role'  
+            name="role" 
+            onChange={handleChange}/>
+
+            <input type="number" placeholder='Phone No.'  
+            name="contact" 
+            onChange={handleChange}/>
+
                 <input className="btn" type="submit" value="submit" />
               </form>
           </div>

@@ -30,7 +30,7 @@ const HomeBottom = () => {
   const navigate = useNavigate();
 
   const gotoRegistration=()=> {
-    navigate("/tsignup")
+    navigate("/signup")
   }
 
   return (
